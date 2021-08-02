@@ -1,16 +1,29 @@
-const timeInput = document.querySelector("#time");
+// Requesting API data
+const bugsUrl = "http://acnhapi.com/v1a/bugs";
+const fishUrl = "http://acnhapi.com/v1a/fish";
+const seaUrl = "http://acnhapi.com/v1a/sea";
 
-// Creating time options
+const searchInput = document.querySelector(".search-form");
+const searchBar = document.querySelector("#search-bar");
 
-const timeSelect = document.querySelector("#time");
+const getData = async (searchValue) => {
+  try {
+    const bugsData = await axios.get(bugsUrl);
+    const fishData = await axios.get(fishUrl);
+    const seaData = await axios.get(seaUrl);
 
-const time = () => {
-  for (let i = 0; i <= 23; i++) {
-    const timeOption = document.createElement("option");
-    timeOption.textContent = `${i}:00`;
-    timeOption.setAttribute("value", i);
-    timeInput.append(timeOption);
+    const listOfBugs = bugsData.data;
+    const listOfFish = fishData.data;
+    const listOfSea = seaData.data;
+
+    const totalList = listOfBugs.concat(listOfFish).concat(listOfSea);
+    console.log(totalList);
+  } catch (error) {
+    console.error(error);
   }
 };
 
-time();
+searchInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+  getData(searchBar.value);
+});
