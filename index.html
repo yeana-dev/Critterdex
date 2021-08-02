@@ -6,20 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <!-- Axios -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <!-- Javascript   -->
   <script defer src="./app.js"></script>
+  <script src="https://kit.fontawesome.com/4d8b628089.js" crossorigin="anonymous"></script>
   <title>Critterdex</title>
 </head>
 
 <body>
-  <h1>Welcome to Critterdex</h1>
-  <div>
-    <form class="search-form">
-      <input type="text" id="search-bar">
-      <input type="submit" value="Catch" id="submit">
-    </form>
+  <div class="container">
+    <header>
+      <h1>Critterdex</h1>
+      <div id="bottom-title">Gotta catch 'em all!</div>
+    </header>
+    <div>
+      <form class="search-form">
+        <input type="text" id="search-bar" placeholder="Search by name" autocomplete="off">
+        <button type="submit" id="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+    <div class="results"></div>
   </div>
-  <div class="results"></div>
 </body>
 
 </html>

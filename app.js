@@ -63,7 +63,12 @@ const getData = async (searchValue) => {
 
 searchInput.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(searchBar.value);
+  if (searchBar.value.length == 0) {
+    // Stopping the function from re-rendering whole page with entire list of critters
+    // when user click the submit button with empty input.
+    alert("Please search by name!");
+    return;
+  }
   getData(searchBar.value);
 });
 
