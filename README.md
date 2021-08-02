@@ -117,14 +117,14 @@ Let users set their time, date, and hemisphere to see the list of bugs, fishes, 
 
 | Component               | Priority | Estimated Time | Time Invested | Actual Time |
 | ----------------------- | :------: | :------------: | :-----------: | :---------: |
-| Set up API using axios  |    H     |      2hrs      |     0hrs      |    -hrs     |
+| Set up API using axios  |    H     |      3hrs      |     0hrs      |    -hrs     |
 | Listing out all of the critters  |    H     |      3hrs      |     0hrs      |    -hrs     |
 | Filter out the result by using critter's name    |    H     |      5hrs      |     0hrs      |    -hrs     |
 | List out each critter's information     |    H     |      6hrs      |     0hrs      |    -hrs     |
 | Render results to HTML using DOM     |    H     |      6hrs      |     0hrs      |    -hrs     |
 | Structuring HTML & form |    H     |      3hrs      |     0hrs      |    -hrs     |
 | Style using CSS/Flexbox |    L     |      8hrs      |     0hrs      |    -hrs     |
-| Total                   |    H     |      32hrs      |     -hrs      |    -hrs     |
+| Total                   |    H     |      34hrs      |     -hrs      |    -hrs     |
 
 ## Code Snippet
 
