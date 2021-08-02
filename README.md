@@ -6,7 +6,7 @@
 
 ## Project Description
 
-Let users set their time, date, and hemisphere to see the list of bugs, fishes, and sea creatures that are available to catch. If user wants to find a specific critter, they can search by their name.
+Let users search critters by their name. List of results with critter's name, location, available time and month by each hemisphere.
 
 ## API and Data Sample
 
