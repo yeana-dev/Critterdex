@@ -90,7 +90,8 @@ Let users search critters by their name. List of results with critter's name, lo
 #### MVP
 
 - Listing each critter with their name, icon, available months, available time, and location.
-- Search engine to look up critter by its name.
+- Text based search for critter
+- Remove previous search
 
 #### PostMVP
 
