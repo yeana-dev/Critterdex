@@ -26,6 +26,9 @@ const getData = async (searchValue) => {
     });
     console.log(filteredSearch);
 
+    // Remove previous search
+    removePrevious(resultDiv);
+
     //Rendering Results to HTML using DOM
     filteredSearch.forEach((result) => {
       //icon
@@ -63,3 +66,9 @@ searchInput.addEventListener("submit", (e) => {
   console.log(searchBar.value);
   getData(searchBar.value);
 });
+
+function removePrevious(result) {
+  while (result.lastChild) {
+    result.removeChild(result.lastChild);
+  }
+}
