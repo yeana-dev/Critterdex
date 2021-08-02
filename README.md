@@ -89,20 +89,16 @@ Let users set their time, date, and hemisphere to see the list of bugs, fishes, 
 
 #### MVP
 
-- Listing each type of critters by current (user's input) time, date, and hemisphere.
-- Listing each critter with their name and icon.
+- Listing each critter with their name, icon, available months, available time, and location.
 - Search engine to look up critter by its name.
 
 #### PostMVP
 
-- Additional information for selected critter. (Detailed image, location, rarity, price, catch-phrase, and museum-phrase)
-- Korean version.
+- Listing each type of critters by current (user's input) time, date, and hemisphere.
+- Additional information for selected critter. (Detailed image, price, catch-phrase, and museum-phrase)
+- Responsive Design. (Priority: Desktop; Secondary: Mobile)
 
 ## Project Schedule
-
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.
-
-You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
 
 | Day      | Deliverable                                                     | Status     |
 | -------- | --------------------------------------------------------------- | ---------- |
@@ -119,17 +115,16 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Timeframes
 
-Tell us how long you anticipate spending on each area of development. Be sure to consider how many hours a day you plan to be coding and how many days you have available until presentation day.
-
-Time frames are also key in the development cycle. You have limited time to code all phases of the game. Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
-
 | Component               | Priority | Estimated Time | Time Invested | Actual Time |
 | ----------------------- | :------: | :------------: | :-----------: | :---------: |
-| Pulling API             |    H     |      2hrs      |     0hrs      |    -hrs     |
-| Structuring HTML & form |    H     |      4hrs      |     0hrs      |    -hrs     |
-| Render user's input     |    H     |      5hrs      |     0hrs      |    -hrs     |
-| Style using CSS/Flexbox |    H     |      5hrs      |     0hrs      |    -hrs     |
-| Total                   |    H     |      -hrs      |     -hrs      |    -hrs     |
+| Set up API using axios  |    H     |      2hrs      |     0hrs      |    -hrs     |
+| Listing out all of the critters  |    H     |      3hrs      |     0hrs      |    -hrs     |
+| Filter out the result by using critter's name    |    H     |      5hrs      |     0hrs      |    -hrs     |
+| List out each critter's information     |    H     |      6hrs      |     0hrs      |    -hrs     |
+| Render results to HTML using DOM     |    H     |      6hrs      |     0hrs      |    -hrs     |
+| Structuring HTML & form |    H     |      3hrs      |     0hrs      |    -hrs     |
+| Style using CSS/Flexbox |    L     |      8hrs      |     0hrs      |    -hrs     |
+| Total                   |    H     |      32hrs      |     -hrs      |    -hrs     |
 
 ## Code Snippet
 
