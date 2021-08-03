@@ -7,6 +7,7 @@ const searchInput = document.querySelector(".search-form");
 const searchBar = document.querySelector("#search-bar");
 
 const resultContainer = document.querySelector(".result-container");
+const critterDiv = document.querySelector(".critter-div");
 
 const getData = async (searchValue) => {
   try {
@@ -80,6 +81,11 @@ function removePrevious(result) {
 
 // DOM Rendering search result
 function renderResults(result) {
+  // // Making div for each type of critter
+  // const critterDiv = document.createElement("div");
+  // critterDiv.classList.add("critter-div");
+  // resultContainer.append(critterDiv);
+
   // Making an individual div for each result
   const resultDiv = document.createElement("div");
   resultDiv.classList.add("resultDiv");
@@ -115,6 +121,7 @@ function renderResults(result) {
   // month
   const months = document.createElement("li");
   months.classList.add("months");
+
   // if the critter is available all year, print
   if (result.availability.isAllYear === true) {
     months.innerHTML = '<i class="fas fa-calendar-alt"></i> Available All Year';
@@ -124,11 +131,13 @@ function renderResults(result) {
       '<i class="fas fa-calendar-alt"></i>' +
       ` North: ${result.availability["month-northern"]} | South : ${result.availability["month-southern"]}`;
   }
+
   resultContent.append(months);
 
   //time
   const time = document.createElement("li");
   time.classList.add("time");
+
   // if the critter is available all day, print
   if (result.availability.isAllDay === true) {
     time.innerHTML = '<i class="far fa-clock"></i> Available all day';
