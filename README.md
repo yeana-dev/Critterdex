@@ -104,7 +104,7 @@ Let users search critters by their name. List of results with critter's name, lo
 | Day      | Deliverable                                                     | Status     |
 | -------- | --------------------------------------------------------------- | ---------- |
 | July 30  | Prompt / Wireframes / Priority Matrix / Timeframes              | Complete   |
-| August 2 | Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete |
+| August 2 | Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete   |
 | August 3 | Pseudocode / actual code                                        | Incomplete |
 | August 4 | Initial Clickable Model                                         | Incomplete |
 | August 5 | MVP                                                             | Incomplete |
@@ -116,16 +116,16 @@ Let users search critters by their name. List of results with critter's name, lo
 
 ## Timeframes
 
-| Component               | Priority | Estimated Time | Time Invested | Actual Time |
-| ----------------------- | :------: | :------------: | :-----------: | :---------: |
-| Set up API using axios  |    H     |      3hrs      |     2hrs      |    2hrs     |
-| Listing out all of the critters  |    H     |      3hrs      |     -hrs      |    -hrs     |
-| Filter out the result by using critter's name    |    H     |      5hrs      |     2hrs      |    -hrs     |
-| List out each critter's information     |    H     |      6hrs      |     0hrs      |    -hrs     |
-| Render results to HTML using DOM     |    H     |      6hrs      |     1hrs      |    -hrs     |
-| Structuring HTML & form |    H     |      3hrs      |     0hrs      |    -hrs     |
-| Style using CSS/Flexbox |    L     |      8hrs      |     0hrs      |    -hrs     |
-| Total                   |    H     |      34hrs      |     -hrs      |    -hrs     |
+| Component                                     | Priority | Estimated Time | Time Invested | Actual Time |
+| --------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
+| Set up API using axios                        |    H     |      3hrs      |     2hrs      |    2hrs     |
+| Listing out all of the critters               |    H     |      3hrs      |     -hrs      |    -hrs     |
+| Filter out the result by using critter's name |    H     |      5hrs      |     3hrs      |    -hrs     |
+| List out each critter's information           |    H     |      6hrs      |     1hrs      |    -hrs     |
+| Render results to HTML using DOM              |    H     |      6hrs      |     1hrs      |    -hrs     |
+| Structuring HTML & form                       |    H     |      3hrs      |     1hrs      |    -hrs     |
+| Style using CSS/Flexbox                       |    L     |      8hrs      |     0hrs      |    -hrs     |
+| Total                                         |    H     |     34hrs      |     -hrs      |    -hrs     |
 
 ## Code Snippet
 
