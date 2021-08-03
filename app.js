@@ -37,15 +37,15 @@ const getData = async (searchValue) => {
       resultDiv.classList.add("resultDiv");
       resultContainer.append(resultDiv);
 
-      // Making results as list
-      const resultContent = document.createElement("ul");
-      resultContainer.append(resultContent);
-
       //icon
       const icon = document.createElement("img");
       icon.classList.add("iconImg");
       icon.setAttribute("src", result.icon_uri);
-      resultContent.append(icon);
+      resultDiv.append(icon);
+
+      // Making results as list
+      const resultContent = document.createElement("ul");
+      resultDiv.append(resultContent);
 
       //name
       const name = document.createElement("li");

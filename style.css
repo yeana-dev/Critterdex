@@ -1,5 +1,6 @@
 * {
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -75,8 +76,22 @@ h1 {
 }
 
 /* Search Result */
+.result-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1em;
+  justify-content: space-evenly;
+}
+
 .resultDiv {
   background-color: white;
+  display: flex;
+  width: 300px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
