@@ -6,6 +6,11 @@ body {
   background-color: #ace5df;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 .container {
   background-color: #fff9e4;
   margin: 0 auto;
@@ -58,15 +63,24 @@ h1 {
 }
 
 #submit {
-  background-color: #0cc6b6;
+  background-color: #66d267;
   color: #dcfff5;
   font-weight: 600;
   cursor: pointer;
 }
 
 #submit:hover {
-  background-color: #00a093;
+  background-color: #8bc48c;
   transition: all ease-in-out 300ms;
+}
+
+/* Search Result */
+.resultDiv {
+  background-color: white;
+}
+
+.name {
+  text-transform: capitalize;
 }
 
 /* Media Queries */
