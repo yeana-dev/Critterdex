@@ -37,47 +37,69 @@ const getData = async (searchValue) => {
       resultDiv.classList.add("resultDiv");
       resultContainer.append(resultDiv);
 
-      //icon
+      // icon
       const icon = document.createElement("img");
       icon.classList.add("iconImg");
       icon.setAttribute("src", result.icon_uri);
       resultDiv.append(icon);
 
-      // Making results as list
-      const resultContent = document.createElement("ul");
-      resultDiv.append(resultContent);
+      // Making separate container for right side content(name,year,location,time)
+      const rightDiv = document.createElement("div");
+      rightDiv.classList.add("right-div");
+      resultDiv.append(rightDiv);
 
       //name
-      const name = document.createElement("li");
-      name.textContent = result.name["name-USen"];
+      const name = document.createElement("div");
       name.classList.add("name");
-      resultContent.append(name);
+      name.textContent = result.name["name-USen"];
+      rightDiv.append(name);
 
-      //location
-      const location = document.createElement("li");
-      location.textContent = result.availability.location;
-      resultContent.append(location);
+      //price
+      const price = document.createElement("div");
+      price.classList.add("price");
+      price.innerHTML = `${result.price} bell`;
+      name.append(price);
 
-      //month
+      // Wrapping year, location, time into a list
+      const resultContent = document.createElement("ul");
+      rightDiv.append(resultContent);
+
+      // month
       const months = document.createElement("li");
+      months.classList.add("months");
       // if the critter is available all year, print
       if (result.availability.isAllYear === true) {
-        months.textContent = "Available All Year";
+        months.innerHTML =
+          '<i class="fas fa-calendar-alt"></i> Available All Year';
       } else {
         // if not, print the months of availability, on each hemisphere
-        months.textContent = `North: ${result.availability["month-northern"]} / South : ${result.availability["month-southern"]}`;
+        months.innerHTML =
+          '<i class="fas fa-calendar-alt"></i>' +
+          ` North: ${result.availability["month-northern"]} | South : ${result.availability["month-southern"]}`;
       }
       resultContent.append(months);
 
       //time
       const time = document.createElement("li");
+      time.classList.add("time");
       // if the critter is available all day, print
       if (result.availability.isAllDay === true) {
-        time.textContent = "Available All Day";
+        time.innerHTML = '<i class="far fa-clock"></i> Available all day';
       } else {
         // if not, print the time of availability
-        time.textContent = result.availability.time.toUpperCase();
+        time.innerHTML =
+          '<i class="far fa-clock"></i>' +
+          ` ${result.availability.time.toUpperCase()}`;
       }
+
+      //location
+      const location = document.createElement("li");
+      location.classList.add("location");
+      // Adding location icon
+      location.innerHTML =
+        '<i class="fas fa-map-pin"></i>' + ` ${result.availability.location}`;
+      resultContent.append(location);
+
       resultContent.append(time);
     });
   } catch (error) {
