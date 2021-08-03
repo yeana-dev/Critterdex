@@ -24,11 +24,45 @@
       <h1>Critterdex</h1>
       <div id="bottom-title">Gotta catch 'em all!</div>
     </header>
-    <div>
-      <form class="search-form">
-        <input type="text" id="search-bar" placeholder="Search by name" autocomplete="off">
-        <button type="submit" id="submit"><i class="fas fa-search"></i></button>
-      </form>
+    <div class="intro-search">
+      <div class="introduction">
+        <img
+        src="https://cdn02.nintendo-europe.com/media/images/08_content_images/games_6/nintendo_switch_7/nswitch_animalcrossingnewhorizons/NSwitch_AnimalCrossingNewHorizons_Overview_Gataway_Chars_Mob.png" id="boys">
+        Welcome to Critterdex! Simple way to find your critters!<br>
+        You can search by current timezone of your island, or just search by name.
+      </div>
+      <div class="how-to-search">
+        <form class="search-form">
+          <div id="hemisphere"><i class="fas fa-globe-americas"></i> Hemisphere :
+            <input type="radio" name="hemisphere" id="northern" value="northern">
+            <label for="northern">Northern</label>
+            <input type="radio" name="hemisphere" id="southern" value="southern">
+            <label for="southern">Southern</label>
+          </div>
+          <div id="timeMonth"></div>
+          <select form="search-form" id="month">
+            <option value=1>January</option>
+            <option value=2>February</option>
+            <option value=3>March</option>
+            <option value=4>April</option>
+            <option value=5>May</option>
+            <option value=6>June</option>
+            <option value=7>July</option>
+            <option value=8>August</option>
+            <option value=9>September</option>
+            <option value=10>October</option>
+            <option value=11>November</option>
+            <option value=12>December</option>
+          </select>
+          <select form="search-form" id="time"></select>
+          <input type="submit" value="Catch" id="submit">
+        </form>
+        <span id="or">or</span>
+        <form class="search-form-name">
+          <input type="text" id="search-bar" placeholder="Search by name" autocomplete="off">
+          <button type="submit" id="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
     </div>
     <div class="result-container"></div>
   </div>
