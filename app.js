@@ -3,7 +3,7 @@ const bugsUrl = "http://acnhapi.com/v1a/bugs";
 const fishUrl = "http://acnhapi.com/v1a/fish";
 const seaUrl = "http://acnhapi.com/v1a/sea";
 
-const searchInput = document.querySelector(".search-form-name");
+const searchInputName = document.querySelector(".search-form-name");
 const searchInput = document.querySelector(".search-form"); // search by time
 const searchBar = document.querySelector("#search-bar");
 
@@ -17,7 +17,7 @@ const resultContainer = document.querySelector(".result-container");
 const critterDiv = document.querySelector(".critter-div");
 
 // if user is searching by name -------------------------------------------------------
-const getData = async (searchValue) => {
+const getDataName = async (searchValue) => {
   try {
     const bugsData = await axios.get(bugsUrl);
     const fishData = await axios.get(fishUrl);
@@ -63,21 +63,34 @@ const getData = async (searchValue) => {
   }
 };
 
-searchInput.addEventListener("submit", (e) => {
+searchInputName.addEventListener("submit", (e) => {
   e.preventDefault();
   if (searchBar.value.length == 0) {
     // Stopping the function from re-rendering whole page with entire list of critters
     // when user click the submit button with empty input.
     return;
   }
-  getData(searchBar.value);
+  getDataName(searchBar.value);
 });
 
-function removePrevious(result) {
-  while (result.lastChild) {
-    result.removeChild(result.lastChild);
+searchInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Two separate parameter for hemisphere
+  if (northern.checked === true) {
+    let usersHemisphere = "northern";
+    // Send the user's input to axios
+    getData(usersHemisphere);
+    return usersHemisphere;
+  } else if (southern.checked === true) {
+    let usersHemisphere = "southern";
+    // Send the user's input to axios
+    getData(usersHemisphere);
+    return usersHemisphere;
+  } else {
+    // Informing user to choose their input
+    console.log("Pick your hemisphere please");
   }
-}
+});
 // -----------------------------------------------------------------------------
 
 // if user is searching by time
@@ -87,70 +100,99 @@ const getData = async (usersHemisphere) => {
     const fishData = await axios.get(fishUrl);
     const seaData = await axios.get(seaUrl);
 
-    const listOfBugs = bugsData.data;
-    const listOfFish = fishData.data;
-    const listOfSea = seaData.data;
-
     // Converting monthInput's and timeInput's value to number from string
     const usersMonth = parseInt(monthInput.value, 10);
     const usersTime = parseInt(timeInput.value, 10);
 
     // Pulling month array according to user's hemisphere input
     if (usersHemisphere === "northern") {
-      removePrevious(resultDiv);
+      removePrevious(resultContainer);
       // For northern hemisphere
-      const bugsResult = listOfBugs.filter(
+      const bugs = bugsData.data.filter(
         (bug) =>
           bug["availability"]["month-array-northern"].includes(usersMonth) &&
           bug["availability"]["time-array"].includes(usersTime)
       );
-      const fishResult = listOfFish.filter(
+      const fish = fishData.data.filter(
         (fish) =>
           fish["availability"]["month-array-northern"].includes(usersMonth) &&
           fish["availability"]["time-array"].includes(usersTime)
       );
-      const seaResult = listOfSea.filter(
+      const sea = seaData.data.filter(
         (sea) =>
           sea["availability"]["month-array-northern"].includes(usersMonth) &&
           sea["availability"]["time-array"].includes(usersTime)
       );
-      console.log(bugsResult);
-      console.log(fishResult);
-      console.log(seaResult);
 
-      //Rendering results to HTML
-      bugsResult.forEach((bugs) => {
-        // Rendering each bug's icon
-        const iconBug = document.createElement("img");
-        iconBug.setAttribute("src", bugs.image_uri);
-        resultDiv.append(iconBug);
+      // Remove previous search before rendering new search
+      removePrevious(resultContainer);
 
-        // Rendering each bug's name
-        const nameBug = document.createElement("div");
-        nameBug.classList.add("bug-name");
-        nameBug.textContent = bugs.name["name-USen"];
-        resultDiv.append(nameBug);
-
-        // Rendering each bug's location
-        const locationBug = document.createElement("div");
-        locationBug.classList.add("bug-location");
-        locationBug.textContent = bugs.availability.location;
-        resultDiv.append(locationBug);
-
-        // Rendering each bug's rarity
-        const timeBug = document.createElement("div");
-        timeBug.classList.add("bug-rarity");
-        timeBug.textContent = bugs.availability.time;
-        resultDiv.append(timeBug);
+      //Rendering Results to HTML using DOM
+      //If no critters were found on search, no title.
+      if (bugs[0] !== undefined) {
+        resultTitleBug();
+      }
+      bugs.forEach((result) => {
+        renderResults(result);
+      });
+      //If no critters were found on search, no title.
+      if (fish[0] !== undefined) {
+        resultTitleFish();
+      }
+      fish.forEach((result) => {
+        renderResults(result);
+      });
+      //If no critters were found on search, no title.
+      if (sea[0] !== undefined) {
+        resultTitleSea();
+      }
+      sea.forEach((result) => {
+        renderResults(result);
       });
     } else if (usersHemisphere === "southern") {
-      // For southern hemisphere
-      const filteredResult = listOfBugs.filter(
+      removePrevious(resultContainer);
+      // For northern hemisphere
+      const bugs = bugsData.data.filter(
         (bug) =>
           bug["availability"]["month-array-southern"].includes(usersMonth) &&
           bug["availability"]["time-array"].includes(usersTime)
       );
-      console.log(filteredResult);
+      const fish = fishData.data.filter(
+        (fish) =>
+          fish["availability"]["month-array-southern"].includes(usersMonth) &&
+          fish["availability"]["time-array"].includes(usersTime)
+      );
+      const sea = seaData.data.filter(
+        (sea) =>
+          sea["availability"]["month-array-southern"].includes(usersMonth) &&
+          sea["availability"]["time-array"].includes(usersTime)
+      );
+
+      // Remove previous search before rendering new search
+      removePrevious(resultContainer);
+
+      //Rendering Results to HTML using DOM
+      //If no critters were found on search, no title.
+      if (bugs[0] !== undefined) {
+        resultTitleBug();
+      }
+      bugs.forEach((result) => {
+        renderResults(result);
+      });
+      //If no critters were found on search, no title.
+      if (fish[0] !== undefined) {
+        resultTitleFish();
+      }
+      fish.forEach((result) => {
+        renderResults(result);
+      });
+      //If no critters were found on search, no title.
+      if (sea[0] !== undefined) {
+        resultTitleSea();
+      }
+      sea.forEach((result) => {
+        renderResults(result);
+      });
     }
   } catch (error) {
     console.error(error);
@@ -253,6 +295,13 @@ function resultTitleSea() {
   resultTitle.classList.add("result-title");
   resultTitle.innerHTML = '<i class="fas fa-water"></i> Sea Creatures';
   resultContainer.append(resultTitle);
+}
+
+//Removing last search result
+function removePrevious(result) {
+  while (result.lastChild) {
+    result.removeChild(result.lastChild);
+  }
 }
 
 // Create time options
