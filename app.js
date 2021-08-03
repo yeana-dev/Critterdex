@@ -16,6 +16,30 @@ const monthInput = document.querySelector("#month");
 const resultContainer = document.querySelector(".result-container");
 const critterDiv = document.querySelector(".critter-div");
 
+// Listing all of the data when page is loaded
+const loadedPage = async () => {
+  try {
+    const bugsData = await axios.get(bugsUrl);
+    const fishData = await axios.get(fishUrl);
+    const seaData = await axios.get(seaUrl);
+
+    resultTitleBug();
+    for (let i = 0; i < bugsData.data.length; i++) {
+      renderResults(bugsData.data[i]);
+    }
+    resultTitleFish();
+    for (let i = 0; i < fishData.data.length; i++) {
+      renderResults(fishData.data[i]);
+    }
+    resultTitleSea();
+    for (let i = 0; i < seaData.data.length; i++) {
+      renderResults(seaData.data[i]);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // if user is searching by name -------------------------------------------------------
 const getDataName = async (searchValue) => {
   try {
@@ -316,3 +340,4 @@ const time = () => {
 };
 
 time();
+loadedPage();
