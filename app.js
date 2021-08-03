@@ -162,20 +162,20 @@ function renderResults(result) {
 function resultTitleBug() {
   const resultTitle = document.createElement("div");
   resultTitle.classList.add("result-title");
-  resultTitle.textContent = "Bugs";
+  resultTitle.innerHTML = '<i class="fas fa-bug"></i> Bugs';
   resultContainer.append(resultTitle);
 }
 
 function resultTitleFish() {
   const resultTitle = document.createElement("div");
   resultTitle.classList.add("result-title");
-  resultTitle.textContent = "Fish";
+  resultTitle.innerHTML = '<i class="fas fa-fish"></i> Fish';
   resultContainer.append(resultTitle);
 }
 
 function resultTitleSea() {
   const resultTitle = document.createElement("div");
   resultTitle.classList.add("result-title");
-  resultTitle.textContent = "Sea Creatures";
+  resultTitle.innerHTML = '<i class="fas fa-water"></i> Sea Creatures';
   resultContainer.append(resultTitle);
 }
