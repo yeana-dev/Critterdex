@@ -33,6 +33,8 @@ const getDataName = async (searchValue) => {
       return critter.name["name-USen"].includes(searchValue);
     });
 
+    console.log(sea);
+
     // Remove previous search before rendering new search
     removePrevious(resultContainer);
 
@@ -237,7 +239,6 @@ function renderResults(result) {
   // month
   const months = document.createElement("li");
   months.classList.add("months");
-
   // if the critter is available all year, print
   if (result.availability.isAllYear === true) {
     months.innerHTML = '<i class="fas fa-calendar-alt"></i> Available All Year';
@@ -247,13 +248,11 @@ function renderResults(result) {
       '<i class="fas fa-calendar-alt"></i>' +
       ` North: ${result.availability["month-northern"]} | South : ${result.availability["month-southern"]}`;
   }
-
   resultContent.append(months);
 
   //time
   const time = document.createElement("li");
   time.classList.add("time");
-
   // if the critter is available all day, print
   if (result.availability.isAllDay === true) {
     time.innerHTML = '<i class="far fa-clock"></i> Available all day';
@@ -265,12 +264,14 @@ function renderResults(result) {
   }
 
   //location
-  const location = document.createElement("li");
-  location.classList.add("location");
-  // Adding location icon
-  location.innerHTML =
-    '<i class="fas fa-map-pin"></i>' + ` ${result.availability.location}`;
-  resultContent.append(location);
+  if (result.availability.hasOwnProperty("location") == true) {
+    const location = document.createElement("li");
+    location.classList.add("location");
+    // Adding location icon
+    location.innerHTML =
+      '<i class="fas fa-map-pin"></i>' + ` ${result.availability.location}`;
+    resultContent.append(location);
+  } else return;
 
   resultContent.append(time);
 }
