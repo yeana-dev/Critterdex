@@ -5,6 +5,7 @@
 
 body {
   background-color: #ace5df;
+  margin: 3em;
 }
 
 ul {
@@ -21,40 +22,37 @@ ul {
 }
 
 /* Header */
-h1,
-#bottom-title {
-  text-align: center;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.peter {
+  width: 100px;
+  padding-right: 1em;
 }
 
 h1 {
   font-size: 3em;
   color: #835a2a;
   letter-spacing: 15px;
-  padding-top: 1em;
-  margin-bottom: 5px;
+  margin: 0 0 5px;
 }
 
 #bottom-title,
 #or,
 .introduction {
-  font-size: 18px;
-  letter-spacing: 10px;
+  letter-spacing: 11px;
   color: #7e725c;
   font-weight: 600;
-}
-
-.intro-search {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  align-items: center;
   text-align: center;
 }
 
-#boys {
-  display: block;
-  margin: 3em auto 1em;
-  width: 350px;
+.how-to-search {
+  align-items: center;
+  text-align: center;
 }
 
 /* Search bar */
@@ -77,7 +75,8 @@ h1 {
 }
 
 #search-bar,
-#submit,
+button,
+#submitName,
 select,
 #hemisphere {
   opacity: 0.8;
@@ -100,14 +99,15 @@ select {
   max-width: 145px;
 }
 
-#submit {
+button,
+#submitName {
   background-color: #66d267;
   color: #dcfff5;
   font-weight: 600;
   cursor: pointer;
 }
 
-#submit:hover {
+button:hover {
   background-color: #8bc48c;
   transition: all ease-in-out 300ms;
 }
