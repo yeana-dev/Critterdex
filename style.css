@@ -34,34 +34,70 @@ h1 {
   margin-bottom: 5px;
 }
 
-#bottom-title {
+#bottom-title,
+#or,
+.introduction {
   font-size: 18px;
   letter-spacing: 10px;
   color: #7e725c;
   font-weight: 600;
 }
 
+.intro-search {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-items: center;
+  text-align: center;
+}
+
+#boys {
+  display: block;
+  margin: 3em auto 1em;
+  width: 350px;
+}
+
 /* Search bar */
 .search-form {
   text-align: center;
-  padding: 2em;
+  padding: 2em 0 1em;
+}
+
+#or,
+.introduction {
+  letter-spacing: -0.3px;
+}
+
+.search-form-name {
+  padding: 1em 0 2em;
+}
+
+#time {
+  width: 80px;
 }
 
 #search-bar,
-#submit {
+#submit,
+select,
+#hemisphere {
   opacity: 0.8;
-  padding: 15px;
-  font-size: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px;
+  font-size: 13px;
+  border: none;
   border-radius: 1em;
+  font-weight: 600;
+  color: #54200c;
+  letter-spacing: -0.3px;
 }
 
-#search-bar {
+#search-bar,
+select {
   background-color: #feec9e;
-  width: 300px;
-  color: #54200c;
-  font-weight: 600;
-  letter-spacing: -0.3px;
+  width: 250px;
+}
+
+select {
+  max-width: 145px;
 }
 
 #submit {
