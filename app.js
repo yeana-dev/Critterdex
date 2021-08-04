@@ -6,7 +6,11 @@ const seaUrl = "https://acnhapi.com/v1a/sea";
 const searchInput = document.querySelector(".search-form"); // search form by time
 const searchInputName = document.querySelector(".search-form-name"); // search form by name
 const searchBar = document.querySelector("#search-bar"); // search bar by name
+
 const viewAllButton = document.querySelector(".view-all");
+const viewBug = document.querySelector("#view-bug");
+const viewFish = document.querySelector("#view-fish");
+const viewSea = document.querySelector("#view-sea");
 
 const hemisphereInput = document.getElementsByName("hemisphere");
 const northern = document.querySelector("#northern");
@@ -18,7 +22,7 @@ const resultContainer = document.querySelector(".result-container");
 const critterDiv = document.querySelector(".critter-div");
 
 // Clicking view all button ------------------------------------------------------
-const viewAll = async () => {
+const viewAll = async (critter) => {
   try {
     const bugsData = await axios.get(bugsUrl);
     const fishData = await axios.get(fishUrl);
@@ -26,27 +30,41 @@ const viewAll = async () => {
 
     removePrevious(resultContainer);
 
-    bugsHeader(bugsData.data);
-    for (let i = 0; i < bugsData.data.length; i++) {
-      renderResults(bugsData.data[i]);
+    function showBug() {
+      bugsHeader(bugsData.data);
+      for (let i = 0; i < bugsData.data.length; i++) {
+        renderResults(bugsData.data[i]);
+      }
     }
-    fishHeader(fishData.data);
-    for (let i = 0; i < fishData.data.length; i++) {
-      renderResults(fishData.data[i]);
+
+    function showFish() {
+      fishHeader(fishData.data);
+      for (let i = 0; i < fishData.data.length; i++) {
+        renderResults(fishData.data[i]);
+      }
     }
-    seaHeader(seaData.data);
-    for (let i = 0; i < seaData.data.length; i++) {
-      renderResults(seaData.data[i]);
+    function showSea() {
+      seaHeader(seaData.data);
+      for (let i = 0; i < seaData.data.length; i++) {
+        renderResults(seaData.data[i]);
+      }
+    }
+
+    if (critter === "bug") {
+      showBug();
+    } else if (critter === "fish") {
+      showFish();
+    } else if (critter === "sea") {
+      showSea();
+    } else {
+      showBug();
+      showFish();
+      showSea();
     }
   } catch (error) {
     console.error(error);
   }
 };
-
-viewAllButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  viewAll();
-});
 
 // if user is searching by name -------------------------------------------------------
 const getDataName = async (searchValue) => {
@@ -82,6 +100,55 @@ const getDataName = async (searchValue) => {
   }
 };
 
+// if user is searching by time
+const getData = async (usersHemisphere) => {
+  try {
+    const bugsData = await axios.get(bugsUrl);
+    const fishData = await axios.get(fishUrl);
+    const seaData = await axios.get(seaUrl);
+
+    // Converting monthInput's and timeInput's value to number from string
+    const usersMonth = parseInt(monthInput.value, 10);
+    const usersTime = parseInt(timeInput.value, 10);
+
+    removePrevious(resultContainer);
+    // filter out the results by available months (on user's input hemisphere) and time
+    const bugs = bugsData.data.filter(
+      (bug) =>
+        bug["availability"][`month-array-${usersHemisphere}`].includes(
+          usersMonth
+        ) && bug["availability"]["time-array"].includes(usersTime)
+    );
+    const fish = fishData.data.filter(
+      (fish) =>
+        fish["availability"][`month-array-${usersHemisphere}`].includes(
+          usersMonth
+        ) && fish["availability"]["time-array"].includes(usersTime)
+    );
+    const sea = seaData.data.filter(
+      (sea) =>
+        sea["availability"][`month-array-${usersHemisphere}`].includes(
+          usersMonth
+        ) && sea["availability"]["time-array"].includes(usersTime)
+    );
+
+    // Remove previous search before rendering new search
+    removePrevious(resultContainer);
+
+    //Rendering Results to HTML using DOM
+    bugsHeader(bugs); // Show header of results if there is at least one result
+    bugs.forEach((result) => renderResults(result));
+    fishHeader(fish); // Show header of results if there is at least one result
+    fish.forEach((result) => renderResults(result));
+    seaHeader(sea); // Show header of results if there is at least one result
+    sea.forEach((result) => renderResults(result));
+  } catch (error) {
+    console.error(error);
+  }
+};
+// -----------------------------------------------------------------------------
+
+// Event listeners ---------------------------------------------------------------------
 searchInputName.addEventListener("submit", (e) => {
   e.preventDefault();
   if (searchBar.value.length == 0) {
@@ -110,84 +177,27 @@ searchInput.addEventListener("submit", (e) => {
     console.log("Pick your hemisphere please");
   }
 });
-// -----------------------------------------------------------------------------
 
-// if user is searching by time
-const getData = async (usersHemisphere) => {
-  try {
-    const bugsData = await axios.get(bugsUrl);
-    const fishData = await axios.get(fishUrl);
-    const seaData = await axios.get(seaUrl);
+viewAllButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("all");
+});
 
-    // Converting monthInput's and timeInput's value to number from string
-    const usersMonth = parseInt(monthInput.value, 10);
-    const usersTime = parseInt(timeInput.value, 10);
+viewBug.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("bug");
+});
 
-    // Pulling month array according to user's hemisphere input
-    if (usersHemisphere === "northern") {
-      removePrevious(resultContainer);
-      // For northern hemisphere
-      const bugs = bugsData.data.filter(
-        (bug) =>
-          bug["availability"]["month-array-northern"].includes(usersMonth) &&
-          bug["availability"]["time-array"].includes(usersTime)
-      );
-      const fish = fishData.data.filter(
-        (fish) =>
-          fish["availability"]["month-array-northern"].includes(usersMonth) &&
-          fish["availability"]["time-array"].includes(usersTime)
-      );
-      const sea = seaData.data.filter(
-        (sea) =>
-          sea["availability"]["month-array-northern"].includes(usersMonth) &&
-          sea["availability"]["time-array"].includes(usersTime)
-      );
+viewFish.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("fish");
+});
 
-      // Remove previous search before rendering new search
-      removePrevious(resultContainer);
-
-      //Rendering Results to HTML using DOM
-      bugsHeader(bugs); // Show header of results if there is at least one result
-      bugs.forEach((result) => renderResults(result));
-      fishHeader(fish); // Show header of results if there is at least one result
-      fish.forEach((result) => renderResults(result));
-      seaHeader(sea); // Show header of results if there is at least one result
-      sea.forEach((result) => renderResults(result));
-    } else if (usersHemisphere === "southern") {
-      removePrevious(resultContainer);
-      // For northern hemisphere
-      const bugs = bugsData.data.filter(
-        (bug) =>
-          bug["availability"]["month-array-southern"].includes(usersMonth) &&
-          bug["availability"]["time-array"].includes(usersTime)
-      );
-      const fish = fishData.data.filter(
-        (fish) =>
-          fish["availability"]["month-array-southern"].includes(usersMonth) &&
-          fish["availability"]["time-array"].includes(usersTime)
-      );
-      const sea = seaData.data.filter(
-        (sea) =>
-          sea["availability"]["month-array-southern"].includes(usersMonth) &&
-          sea["availability"]["time-array"].includes(usersTime)
-      );
-
-      // Remove previous search before rendering new search
-      removePrevious(resultContainer);
-
-      //Rendering Results to HTML using DOM
-      bugsHeader(bugs); // Show header of results if there is at least one result
-      bugs.forEach((result) => renderResults(result));
-      fishHeader(fish); // Show header of results if there is at least one result
-      fish.forEach((result) => renderResults(result));
-      seaHeader(sea); // Show header of results if there is at least one result
-      sea.forEach((result) => renderResults(result));
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
-// -----------------------------------------------------------------------------
+viewSea.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("sea");
+});
+//-------------------------------------------------------------------------------------
 
 // DOM Rendering search result ↓
 function renderResults(result) {

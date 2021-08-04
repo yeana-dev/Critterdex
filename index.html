@@ -23,7 +23,9 @@
     <header>
       <img src="https://www.giantbomb.com/a/uploads/scale_medium/0/1992/3169266-beau_hd.png" class="peter">
       <div class="right-header">
-        <h1>Critterdex</h1>
+        <a onClick="window.location.reload();">
+          <h1>Critterdex</h1>
+        </a>
         <span id="bottom-title">Gotta catch 'em all!</span>
       </div>
     </header>
@@ -62,7 +64,13 @@
         <input type="text" id="search-bar" placeholder="Search by name" autocomplete="off">
         <button type="submit" id="submit"><i class="fas fa-search"></i></button>
       </form>
+      <hr>
       <button class="view-all">Show me all critters</button>
+      <div class="show-each-critters">
+        <button class="critter-button" id="view-bug"><i class="fas fa-bug"></i> Bug</button>
+        <button class="critter-button" id="view-fish"><i class="fas fa-fish"></i> Fish</button>
+        <button class="critter-button" id="view-sea"><i class="fas fa-water"></i> Sea Creatures</button>
+      </div>
     </div>
 
     <div class="result-container"></div>
