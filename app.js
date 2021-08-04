@@ -3,9 +3,9 @@ const bugsUrl = "http://acnhapi.com/v1a/bugs";
 const fishUrl = "http://acnhapi.com/v1a/fish";
 const seaUrl = "http://acnhapi.com/v1a/sea";
 
-const searchInputName = document.querySelector(".search-form-name");
-const searchInput = document.querySelector(".search-form"); // search by time
-const searchBar = document.querySelector("#search-bar");
+const searchInput = document.querySelector(".search-form"); // search form by time
+const searchInputName = document.querySelector(".search-form-name"); // search form by name
+const searchBar = document.querySelector("#search-bar"); // search bar by name
 
 const hemisphereInput = document.getElementsByName("hemisphere");
 const northern = document.querySelector("#northern");
@@ -56,8 +56,6 @@ const getDataName = async (searchValue) => {
     const sea = seaData.data.filter((critter) => {
       return critter.name["name-USen"].includes(searchValue);
     });
-
-    console.log(sea);
 
     // Remove previous search before rendering new search
     removePrevious(resultContainer);
