@@ -1,6 +1,7 @@
 * {
   font-family: "Quicksand", sans-serif;
   scroll-behavior: smooth;
+  font-weight: 600;
 }
 
 body {
@@ -67,7 +68,7 @@ h1 {
 }
 
 .search-form-name {
-  padding: 1em 0 2em;
+  padding-top: 1em;
 }
 
 #time {
@@ -92,7 +93,8 @@ select,
 #search-bar,
 select {
   background-color: #feec9e;
-  width: 250px;
+  width: 235px;
+  text-align: center;
 }
 
 select {
@@ -133,8 +135,7 @@ button:hover {
 .result-title {
   width: 100%;
   font-size: 22px;
-  padding: 3em 0 0 1em;
-  font-weight: 600;
+  padding: 2em 0 0 1em;
   color: #835a2a;
 }
 
@@ -185,6 +186,16 @@ ul {
 
 .location {
   margin-right: 10px;
+}
+
+.top-button {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  color: #fff9e4;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 7px;
+  border: 3px #fff9e4 solid;
+  border-radius: 99px;
 }
 
 /* Media Queries */
