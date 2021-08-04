@@ -119,12 +119,12 @@ Let users search critters by their name. List of results with critter's name, lo
 | Component                                     | Priority | Estimated Time | Time Invested | Actual Time |
 | --------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
 | Set up API using axios                        |    H     |      3hrs      |     2hrs      |    2hrs     |
-| Listing out all of the critters               |    H     |      3hrs      |     2hrs      |    -hrs     |
+| Listing out all of the critters               |    H     |      3hrs      |     3hrs      |    3hrs     |
 | Filter out the result by using critter's name |    H     |      5hrs      |     4hrs      |    4hrs     |
 | List out each critter's information           |    H     |      6hrs      |     4hrs      |    4hrs     |
 | Render results to HTML using DOM              |    H     |      6hrs      |     6hrs      |    6hrs     |
 | Structuring HTML & form                       |    H     |      3hrs      |     2hrs      |    2hrs     |
-| Style using CSS/Flexbox                       |    L     |      8hrs      |     5hrs      |    -hrs     |
+| Style using CSS/Flexbox                       |    L     |      8hrs      |     8hrs      |    8hrs     |
 | Total                                         |    H     |     34hrs      |     -hrs      |    -hrs     |
 
 ## Code Snippet
