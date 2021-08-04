@@ -6,7 +6,7 @@
 
 body {
   background-color: #ace5df;
-  margin: 3em;
+  margin: 3em 0 0;
 }
 
 ul {
@@ -44,11 +44,16 @@ h1 {
 
 #bottom-title,
 #or,
-.introduction {
-  letter-spacing: 11px;
+.introduction,
+footer {
   color: #7e725c;
   font-weight: 600;
   text-align: center;
+  letter-spacing: -0.3px;
+}
+
+#bottom-title {
+  letter-spacing: 11px;
 }
 
 .how-to-search {
@@ -60,11 +65,6 @@ h1 {
 .search-form {
   text-align: center;
   padding: 2em 0 1em;
-}
-
-#or,
-.introduction {
-  letter-spacing: -0.3px;
 }
 
 .search-form-name {
@@ -90,6 +90,16 @@ select,
   letter-spacing: -0.3px;
 }
 
+.fa-globe-americas {
+  padding-right: 5px;
+}
+
+#hemisphere {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #search-bar,
 select {
   background-color: #feec9e;
@@ -109,8 +119,10 @@ button,
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #8bc48c;
+button:hover,
+#submitName:hover {
+  background-color: #dcfff5;
+  color: #66d267;
   transition: all ease-in-out 300ms;
 }
 
@@ -196,6 +208,29 @@ ul {
   box-shadow: rgb(0 0 0 / 20%) 0px 3px 7px;
   border: 3px #fff9e4 solid;
   border-radius: 99px;
+}
+
+footer {
+  background-color: #feec9e;
+  color: #7c6839;
+  margin-top: 1em;
+  font-size: 2em;
+  padding: 20px;
+}
+
+.footer-text {
+  display: block;
+  font-size: 12px;
+}
+
+a:link,
+a:visited {
+  color: #7c6839;
+}
+
+a:hover {
+  color: #835a2a;
+  transition: all 250ms ease-in-out;
 }
 
 /* Media Queries */
