@@ -23,15 +23,15 @@ const loadedPage = async () => {
     const fishData = await axios.get(fishUrl);
     const seaData = await axios.get(seaUrl);
 
-    resultTitleBug();
+    bugsHeader(bugsData.data);
     for (let i = 0; i < bugsData.data.length; i++) {
       renderResults(bugsData.data[i]);
     }
-    resultTitleFish();
+    fishHeader(fishData.data);
     for (let i = 0; i < fishData.data.length; i++) {
       renderResults(fishData.data[i]);
     }
-    resultTitleSea();
+    seaHeader(seaData.data);
     for (let i = 0; i < seaData.data.length; i++) {
       renderResults(seaData.data[i]);
     }
@@ -61,27 +61,14 @@ const getDataName = async (searchValue) => {
     removePrevious(resultContainer);
 
     //Rendering Results to HTML using DOM
-    //If no critters were found on search, no title.
-    if (bugs[0] !== undefined) {
-      resultTitleBug();
-    }
-    bugs.forEach((result) => {
-      renderResults(result);
-    });
-    //If no critters were found on search, no title.
-    if (fish[0] !== undefined) {
-      resultTitleFish();
-    }
-    fish.forEach((result) => {
-      renderResults(result);
-    });
-    //If no critters were found on search, no title.
-    if (sea[0] !== undefined) {
-      resultTitleSea();
-    }
-    sea.forEach((result) => {
-      renderResults(result);
-    });
+    bugsHeader(bugs); // Show header of results if there is at least one result
+    bugs.forEach((result) => renderResults(result));
+
+    fishHeader(fish); // Show header of results if there is at least one result
+    fish.forEach((result) => renderResults(result));
+
+    seaHeader(sea); // Show header of results if there is at least one result
+    sea.forEach((result) => renderResults(result));
   } catch (error) {
     console.error(error);
   }
@@ -152,27 +139,12 @@ const getData = async (usersHemisphere) => {
       removePrevious(resultContainer);
 
       //Rendering Results to HTML using DOM
-      //If no critters were found on search, no title.
-      if (bugs[0] !== undefined) {
-        resultTitleBug();
-      }
-      bugs.forEach((result) => {
-        renderResults(result);
-      });
-      //If no critters were found on search, no title.
-      if (fish[0] !== undefined) {
-        resultTitleFish();
-      }
-      fish.forEach((result) => {
-        renderResults(result);
-      });
-      //If no critters were found on search, no title.
-      if (sea[0] !== undefined) {
-        resultTitleSea();
-      }
-      sea.forEach((result) => {
-        renderResults(result);
-      });
+      bugsHeader(bugs); // Show header of results if there is at least one result
+      bugs.forEach((result) => renderResults(result));
+      fishHeader(fish); // Show header of results if there is at least one result
+      fish.forEach((result) => renderResults(result));
+      seaHeader(sea); // Show header of results if there is at least one result
+      sea.forEach((result) => renderResults(result));
     } else if (usersHemisphere === "southern") {
       removePrevious(resultContainer);
       // For northern hemisphere
@@ -196,27 +168,12 @@ const getData = async (usersHemisphere) => {
       removePrevious(resultContainer);
 
       //Rendering Results to HTML using DOM
-      //If no critters were found on search, no title.
-      if (bugs[0] !== undefined) {
-        resultTitleBug();
-      }
-      bugs.forEach((result) => {
-        renderResults(result);
-      });
-      //If no critters were found on search, no title.
-      if (fish[0] !== undefined) {
-        resultTitleFish();
-      }
-      fish.forEach((result) => {
-        renderResults(result);
-      });
-      //If no critters were found on search, no title.
-      if (sea[0] !== undefined) {
-        resultTitleSea();
-      }
-      sea.forEach((result) => {
-        renderResults(result);
-      });
+      bugsHeader(bugs); // Show header of results if there is at least one result
+      bugs.forEach((result) => renderResults(result));
+      fishHeader(fish); // Show header of results if there is at least one result
+      fish.forEach((result) => renderResults(result));
+      seaHeader(sea); // Show header of results if there is at least one result
+      sea.forEach((result) => renderResults(result));
     }
   } catch (error) {
     console.error(error);
@@ -224,40 +181,34 @@ const getData = async (usersHemisphere) => {
 };
 // -----------------------------------------------------------------------------
 
-// DOM Rendering search result
+// DOM Rendering search result ↓
 function renderResults(result) {
   // Making an individual div for each result
   const resultDiv = document.createElement("div");
   resultDiv.classList.add("resultDiv");
   resultContainer.append(resultDiv);
-
   // icon
   const icon = document.createElement("img");
   icon.classList.add("iconImg");
   icon.setAttribute("src", result.icon_uri);
   resultDiv.append(icon);
-
   // Making separate container for right side content(name,year,location,time)
   const rightDiv = document.createElement("div");
   rightDiv.classList.add("right-div");
   resultDiv.append(rightDiv);
-
   //name
   const name = document.createElement("div");
   name.classList.add("name");
   name.textContent = result.name["name-USen"];
   rightDiv.append(name);
-
   //price
   const price = document.createElement("div");
   price.classList.add("price");
   price.innerHTML = `${result.price} bell`;
   name.append(price);
-
   // Wrapping year, location, time into a list
   const resultContent = document.createElement("ul");
   rightDiv.append(resultContent);
-
   // month
   const months = document.createElement("li");
   months.classList.add("months");
@@ -298,26 +249,30 @@ function renderResults(result) {
   resultContent.append(time);
 }
 
-//Result's title
-function resultTitleBug() {
-  const resultTitle = document.createElement("div");
-  resultTitle.classList.add("result-title");
-  resultTitle.innerHTML = '<i class="fas fa-bug"></i> Bugs';
-  resultContainer.append(resultTitle);
+//Check if there's a result ↓
+function bugsHeader(bugs) {
+  if (bugs[0] !== undefined) {
+    const resultTitle = document.createElement("div");
+    resultTitle.classList.add("result-title");
+    resultTitle.innerHTML = '<i class="fas fa-bug"></i> Bugs';
+    resultContainer.append(resultTitle);
+  }
 }
-
-function resultTitleFish() {
-  const resultTitle = document.createElement("div");
-  resultTitle.classList.add("result-title");
-  resultTitle.innerHTML = '<i class="fas fa-fish"></i> Fish';
-  resultContainer.append(resultTitle);
+function fishHeader(fish) {
+  if (fish[0] !== undefined) {
+    const resultTitle = document.createElement("div");
+    resultTitle.classList.add("result-title");
+    resultTitle.innerHTML = '<i class="fas fa-fish"></i> Fish';
+    resultContainer.append(resultTitle);
+  }
 }
-
-function resultTitleSea() {
-  const resultTitle = document.createElement("div");
-  resultTitle.classList.add("result-title");
-  resultTitle.innerHTML = '<i class="fas fa-water"></i> Sea Creatures';
-  resultContainer.append(resultTitle);
+function seaHeader(sea) {
+  if (sea[0] !== undefined) {
+    const resultTitle = document.createElement("div");
+    resultTitle.classList.add("result-title");
+    resultTitle.innerHTML = '<i class="fas fa-water"></i> Sea Creatures';
+    resultContainer.append(resultTitle);
+  }
 }
 
 //Removing last search result
