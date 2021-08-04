@@ -24,6 +24,8 @@ const viewAll = async () => {
     const fishData = await axios.get(fishUrl);
     const seaData = await axios.get(seaUrl);
 
+    removePrevious(resultContainer);
+
     bugsHeader(bugsData.data);
     for (let i = 0; i < bugsData.data.length; i++) {
       renderResults(bugsData.data[i]);
