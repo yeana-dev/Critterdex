@@ -206,9 +206,8 @@ ul {
   position: fixed;
   bottom: 1em;
   right: 1em;
-  color: #fff9e4;
   box-shadow: rgb(0 0 0 / 20%) 0px 3px 7px;
-  border: 3px #fff9e4 solid;
+  border: 3px #ce925a solid;
   border-radius: 99px;
 }
 
