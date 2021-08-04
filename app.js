@@ -1,7 +1,7 @@
 // Requesting API data
-const bugsUrl = "http://acnhapi.com/v1a/bugs";
-const fishUrl = "http://acnhapi.com/v1a/fish";
-const seaUrl = "http://acnhapi.com/v1a/sea";
+const bugsUrl = "https://acnhapi.com/v1a/bugs";
+const fishUrl = "https://acnhapi.com/v1a/fish";
+const seaUrl = "https://acnhapi.com/v1a/sea";
 
 const searchInput = document.querySelector(".search-form"); // search form by time
 const searchInputName = document.querySelector(".search-form-name"); // search form by name
