@@ -6,6 +6,7 @@ const seaUrl = "https://acnhapi.com/v1a/sea";
 const searchInput = document.querySelector(".search-form"); // search form by time
 const searchInputName = document.querySelector(".search-form-name"); // search form by name
 const searchBar = document.querySelector("#search-bar"); // search bar by name
+const viewAllButton = document.querySelector(".view-all");
 
 const hemisphereInput = document.getElementsByName("hemisphere");
 const northern = document.querySelector("#northern");
@@ -16,8 +17,8 @@ const monthInput = document.querySelector("#month");
 const resultContainer = document.querySelector(".result-container");
 const critterDiv = document.querySelector(".critter-div");
 
-// Listing all of the data when page is loaded
-const loadedPage = async () => {
+// Clicking view all button ------------------------------------------------------
+const viewAll = async () => {
   try {
     const bugsData = await axios.get(bugsUrl);
     const fishData = await axios.get(fishUrl);
@@ -39,6 +40,11 @@ const loadedPage = async () => {
     console.error(error);
   }
 };
+
+viewAllButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll();
+});
 
 // if user is searching by name -------------------------------------------------------
 const getDataName = async (searchValue) => {
@@ -293,4 +299,3 @@ const time = () => {
 };
 
 time();
-loadedPage();

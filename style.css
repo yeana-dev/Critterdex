@@ -127,6 +127,13 @@ button:hover,
   transition: all ease-in-out 300ms;
 }
 
+.view-all {
+  width: 277px;
+  margin: 1.5em;
+  padding: 0.5em;
+  font-size: 15px;
+}
+
 /* Search Result */
 .result-container {
   display: flex;
