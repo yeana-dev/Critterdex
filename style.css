@@ -4,6 +4,10 @@
   font-weight: 600;
 }
 
+*::selection {
+  background: #66d267;
+}
+
 body {
   background-color: #ace5df;
   margin: 0;
@@ -107,7 +111,7 @@ select {
   background-color: #feec9e;
   width: 235px;
   text-align: center;
-  box-shadow: rgb(0 0 0 / 20%) 0px 3px 6px;
+  box-shadow: rgb(0 0 0 / 10%) 1px 3px 1px;
 }
 
 select {
@@ -120,7 +124,7 @@ button,
   color: #dcfff5;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: rgb(0 0 0 / 20%) 0px 3px 6px;
+  box-shadow: rgb(0 0 0 / 10%) 1px 3px 1px;
 }
 
 button:hover,
