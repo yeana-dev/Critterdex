@@ -130,9 +130,48 @@ Let users search critters by their name. List of results with critter's name, lo
 ## Code Snippet
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+const getData = async (usersHemisphere) => {
+  try {
+    const bugsData = await axios.get(bugsUrl);
+    const fishData = await axios.get(fishUrl);
+    const seaData = await axios.get(seaUrl);
+
+    // Converting monthInput's and timeInput's value to number from string
+    const usersMonth = parseInt(monthInput.value, 10);
+    const usersTime = parseInt(timeInput.value, 10);
+
+    removePrevious(resultContainer);
+    // filter out the results by available months (on user's input hemisphere) and time
+    const bugs = bugsData.data.filter(
+      (bug) =>
+        bug["availability"][`month-array-${usersHemisphere}`].includes(
+          usersMonth
+        ) && bug["availability"]["time-array"].includes(usersTime)
+    );
+    //Rendering Results to HTML using DOM
+    bugsHeader(bugs); // Show header of results if there is at least one result
+    bugs.forEach((result) => renderResults(result));
+      } catch (error) {
+    console.error(error);
+  }
+};
+
+searchInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Two separate parameter for hemisphere
+  if (northern.checked === true) {
+    let usersHemisphere = "northern";
+    getData(usersHemisphere); // Send the user's input to axios
+    return usersHemisphere;
+  } else if (southern.checked === true) {
+    let usersHemisphere = "southern";
+    getData(usersHemisphere); // Send the user's input to axios
+    return usersHemisphere;
+  } else {
+    // Informing user to choose their input
+    alert("Pick your hemisphere please");
+  }
+});
 ```
 
 ## Change Log
