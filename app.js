@@ -174,7 +174,7 @@ searchInput.addEventListener("submit", (e) => {
     return usersHemisphere;
   } else {
     // Informing user to choose their input
-    console.log("Pick your hemisphere please");
+    alert("Pick your hemisphere please");
   }
 });
 
