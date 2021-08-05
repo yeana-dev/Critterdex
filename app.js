@@ -242,17 +242,16 @@ function renderResults(result) {
     time.innerHTML = '<i class="far fa-clock"></i> Available all day';
   } else {
     // if not, print the time of availability
-    time.innerHTML =
-      '<i class="far fa-clock"></i>' +
-      ` ${result.availability.time.toUpperCase()}`;
+    time.innerHTML = `<i class="far fa-clock"></i> ${result.availability.time.toUpperCase()}`;
   }
 
   //location
   if (result.availability.hasOwnProperty("location") == true) {
     const location = document.createElement("li");
     location.classList.add("location");
-    location.innerHTML = // Adding location icon
-      '<i class="fas fa-map-pin"></i>' + ` ${result.availability.location}`;
+    location.innerHTML =
+      // Adding location icon
+      `<i class="fas fa-map-pin"></i> ${result.availability.location}`;
     resultContent.append(location);
   } else return;
 
