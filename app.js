@@ -146,16 +146,13 @@ const getData = async (usersHemisphere) => {
     console.error(error);
   }
 };
-// -----------------------------------------------------------------------------
 
 // Event listeners ---------------------------------------------------------------------
 searchInputName.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (searchBar.value.length == 0) {
-    // Stopping the function from re-rendering whole page with entire list of critters
-    // when user click the submit button with empty input.
-    return;
-  }
+  if (searchBar.value.length == 0) return;
+  // Stopping the function from re-rendering whole page with entire list of critters
+  // when user click the submit button with empty input.
   getDataName(searchBar.value);
 });
 
@@ -164,13 +161,11 @@ searchInput.addEventListener("submit", (e) => {
   // Two separate parameter for hemisphere
   if (northern.checked === true) {
     let usersHemisphere = "northern";
-    // Send the user's input to axios
-    getData(usersHemisphere);
+    getData(usersHemisphere); // Send the user's input to axios
     return usersHemisphere;
   } else if (southern.checked === true) {
     let usersHemisphere = "southern";
-    // Send the user's input to axios
-    getData(usersHemisphere);
+    getData(usersHemisphere); // Send the user's input to axios
     return usersHemisphere;
   } else {
     // Informing user to choose their input
@@ -197,7 +192,6 @@ viewSea.addEventListener("click", (e) => {
   e.preventDefault();
   viewAll("sea");
 });
-//-------------------------------------------------------------------------------------
 
 // DOM Rendering search result ↓
 function renderResults(result) {
@@ -243,8 +237,7 @@ function renderResults(result) {
 
   //time
   const time = document.createElement("li");
-  time.classList.add("time");
-  // if the critter is available all day, print
+  time.classList.add("time"); // if the critter is available all day, print
   if (result.availability.isAllDay === true) {
     time.innerHTML = '<i class="far fa-clock"></i> Available all day';
   } else {
@@ -258,8 +251,7 @@ function renderResults(result) {
   if (result.availability.hasOwnProperty("location") == true) {
     const location = document.createElement("li");
     location.classList.add("location");
-    // Adding location icon
-    location.innerHTML =
+    location.innerHTML = // Adding location icon
       '<i class="fas fa-map-pin"></i>' + ` ${result.availability.location}`;
     resultContent.append(location);
   } else return;
