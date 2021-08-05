@@ -107,7 +107,7 @@ Let users search critters by their name. List of results with critter's name, lo
 | August 2 | Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete   |
 | August 3 | Pseudocode / actual code                                        | Complete   |
 | August 4 | Initial Clickable Model                                         | Complete   |
-| August 5 | MVP                                                             | Incomplete |
+| August 5 | MVP                                                             | Complete   |
 | August 6 | Presentations                                                   | Incomplete |
 
 ## Priority Matrix
