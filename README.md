@@ -4,7 +4,7 @@
 
 ## Critterdex - Animal Crossing New Horizon
 
-## [Deployed Web Site](https://yeana-dev.github.io/Critterdex-for-animal-crossing/)
+## [🍉 Deployed Web Site](https://yeana-dev.github.io/Critterdex-for-animal-crossing/)
 
 ## Project Description
 
