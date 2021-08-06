@@ -4,6 +4,8 @@
 
 ## Critterdex - Animal Crossing New Horizon
 
+## [Deployed Web Site](https://yeana-dev.github.io/Critterdex-for-animal-crossing/)
+
 ## Project Description
 
 Let users search critters by their name. List of results with critter's name, location, available time and month by each hemisphere.
