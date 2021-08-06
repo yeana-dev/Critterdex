@@ -21,6 +21,52 @@ const monthInput = document.querySelector("#month");
 const resultContainer = document.querySelector(".result-container");
 const critterDiv = document.querySelector(".critter-div");
 
+// Event listeners ---------------------------------------------------------------------
+searchInputName.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (searchBar.value.length == 0) return;
+  // Stopping the function from re-rendering whole page with entire list of critters
+  // when user click the submit button with empty input.
+  getDataName(searchBar.value);
+});
+
+searchInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Two separate parameter for hemisphere
+  if (northern.checked === true) {
+    let usersHemisphere = "northern";
+    getData(usersHemisphere); // Send the user's input to axios
+    return usersHemisphere;
+  } else if (southern.checked === true) {
+    let usersHemisphere = "southern";
+    getData(usersHemisphere); // Send the user's input to axios
+    return usersHemisphere;
+  } else {
+    // Informing user to choose their input
+    alert("Pick your hemisphere please");
+  }
+});
+
+viewAllButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("all");
+});
+
+viewBug.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("bug");
+});
+
+viewFish.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("fish");
+});
+
+viewSea.addEventListener("click", (e) => {
+  e.preventDefault();
+  viewAll("sea");
+});
+
 // Clicking view all button ------------------------------------------------------
 const viewAll = async (critter) => {
   try {
@@ -146,52 +192,6 @@ const getData = async (usersHemisphere) => {
     console.error(error);
   }
 };
-
-// Event listeners ---------------------------------------------------------------------
-searchInputName.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (searchBar.value.length == 0) return;
-  // Stopping the function from re-rendering whole page with entire list of critters
-  // when user click the submit button with empty input.
-  getDataName(searchBar.value);
-});
-
-searchInput.addEventListener("submit", (e) => {
-  e.preventDefault();
-  // Two separate parameter for hemisphere
-  if (northern.checked === true) {
-    let usersHemisphere = "northern";
-    getData(usersHemisphere); // Send the user's input to axios
-    return usersHemisphere;
-  } else if (southern.checked === true) {
-    let usersHemisphere = "southern";
-    getData(usersHemisphere); // Send the user's input to axios
-    return usersHemisphere;
-  } else {
-    // Informing user to choose their input
-    alert("Pick your hemisphere please");
-  }
-});
-
-viewAllButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  viewAll("all");
-});
-
-viewBug.addEventListener("click", (e) => {
-  e.preventDefault();
-  viewAll("bug");
-});
-
-viewFish.addEventListener("click", (e) => {
-  e.preventDefault();
-  viewAll("fish");
-});
-
-viewSea.addEventListener("click", (e) => {
-  e.preventDefault();
-  viewAll("sea");
-});
 
 // DOM Rendering search result ↓
 function renderResults(result) {
