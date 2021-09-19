@@ -153,7 +153,7 @@ const getData = async (usersHemisphere) => {
     const fishData = await axios.get(fishUrl);
     const seaData = await axios.get(seaUrl);
 
-    // Converting monthInput's and timeInput's value to number from string
+    // Converting monthInput's and timeInput's value to integer from string
     const usersMonth = parseInt(monthInput.value, 10);
     const usersTime = parseInt(timeInput.value, 10);
 
@@ -295,7 +295,13 @@ function removePrevious(result) {
 const time = () => {
   for (let i = 0; i <= 23; i++) {
     const timeOption = document.createElement("option");
-    timeOption.textContent = `${i}:00`;
+    if (i <= 11) {
+      timeOption.textContent = `${i}:00 AM`;
+    } else if (i === 12) {
+      timeOption.textContent = `12:00 PM`;
+    } else {
+      timeOption.textContent = `${i - 12}:00 PM`;
+    }
     timeOption.setAttribute("value", i);
     timeInput.append(timeOption);
   }
