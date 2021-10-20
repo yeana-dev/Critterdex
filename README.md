@@ -8,7 +8,7 @@
 
 ## Project Description
 
-Let users search critters by their name. List of results with critter's name, location, available time and month by each hemisphere.
+Nintendo switch game 'Animal Crossing' critter encyclopedia. Basic application for users to search critters from Animal Crossing by many search methods. Used [ACNH open API](http://acnhapi.com/)
 
 ## API and Data Sample
 
@@ -103,14 +103,14 @@ Let users search critters by their name. List of results with critter's name, lo
 
 ## Project Schedule
 
-| Day      | Deliverable                                                     | Status     |
-| -------- | --------------------------------------------------------------- | ---------- |
-| July 30  | Prompt / Wireframes / Priority Matrix / Timeframes              | Complete   |
-| August 2 | Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete   |
-| August 3 | Pseudocode / actual code                                        | Complete   |
-| August 4 | Initial Clickable Model                                         | Complete   |
-| August 5 | MVP                                                             | Complete   |
-| August 6 | Presentations                                                   | Incomplete |
+| Day      | Deliverable                                                     | Status   |
+| -------- | --------------------------------------------------------------- | -------- |
+| July 30  | Prompt / Wireframes / Priority Matrix / Timeframes              | Complete |
+| August 2 | Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete |
+| August 3 | Pseudocode / actual code                                        | Complete |
+| August 4 | Initial Clickable Model                                         | Complete |
+| August 5 | MVP                                                             | Complete |
+| August 6 | Presentations                                                   | Complete |
 
 ## Priority Matrix
 
@@ -127,7 +127,7 @@ Let users search critters by their name. List of results with critter's name, lo
 | Render results to HTML using DOM              |    H     |      6hrs      |     6hrs      |    6hrs     |
 | Structuring HTML & form                       |    H     |      3hrs      |     3hrs      |    3hrs     |
 | Style using CSS/Flexbox                       |    L     |      8hrs      |     8hrs      |    8hrs     |
-| Total                                         |    H     |     34hrs      |     -hrs      |    31hrs    |
+| Total                                         |    H     |     34hrs      |     31hrs     |    31hrs    |
 
 ## Code Snippet
 
@@ -175,5 +175,3 @@ searchInput.addEventListener("submit", (e) => {
   }
 });
 ```
-
-## Change Log
